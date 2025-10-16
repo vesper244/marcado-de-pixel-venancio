@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-equiv="refresh" content="10; url=https://drive.google.com/drive/folders/1sjIgg0jBngoOL4XjBiWXb8J-reY-idX_">
+
+    <title></title>
+
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    // PASSO 2: SEU PIXEL ID JÁ ESTÁ CONFIGURADO ABAIXO
+    fbq('init', '706410655052855');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=706410655052855&ev=PageView&noscript=1"
+    /></noscript>
+    </head>
+<body style="background-color: white;">
+
+    <script>
+        // Função para verificar se um cookie existe
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        // Verifica se o cookie 'compra_registrada_pixel' NÃO existe
+        if (!getCookie('compra_registrada_pixel')) {
+            
+            // Se não existe, dispara o evento de Purchase com o valor de 30.00 BRL
+            fbq('track', 'Purchase', {value: 30.00, currency: 'BRL'});
+            
+            // E então, cria o cookie para que não dispare de novo.
+            // O cookie aqui está configurado para durar 1 ano (31536000 segundos).
+            document.cookie = "compra_registrada_pixel=true; max-age=31536000; path=/";
+
+            console.log("Evento de Purchase (R$30,00) disparado e cookie criado.");
+
+        } else {
+            console.log("Cookie encontrado. Evento de Purchase NÃO foi disparado novamente.");
+        }
+    </script>
+    </body>
+</html>
